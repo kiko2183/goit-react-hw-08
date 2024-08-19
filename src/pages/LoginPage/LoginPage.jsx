@@ -1,12 +1,35 @@
-import LoginForm from '../../components/LoginForm/LoginForm';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux/auth/operations';
 
-const LoginPage = () => {
+const LoginForm = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login({ email, password })).then(() => {
+      // Перенаправляємо користувача на сторінку контактів після успішного входу
+      navigate('/contacts', { replace: true });
+    });
+  };
+
   return (
-    <div>
-      <h1>Login Page</h1>
-      <LoginForm />
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Email:
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+      </label>
+      <label>
+        Password:
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+      </label>
+      <button type="submit">Login</button>
+    </form>
   );
 };
 
-export default LoginPage;
+export default LoginForm;
