@@ -6,7 +6,7 @@ export const selectFilter = (state) => state.filters.filter;
 export const selectVisibleContacts = createSelector(
   [selectContacts, selectFilter],
   (contacts, filter) => {
-    // Додайте перевірку на наявність значення фільтра
+
     const normalizedFilter = filter ? filter.toLowerCase() : '';
 
     return contacts.filter(contact =>

@@ -5,10 +5,10 @@ import styles from './SearchBox.module.css';
 
 const SearchBox = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(selectFilter); // Використовуємо селектор selectFilter
+  const filter = useSelector(selectFilter); 
 
   const handleChange = (event) => {
-    dispatch(setFilter(event.target.value)); // Викликаємо setFilter
+    dispatch(setFilter(event.target.value));
   };
 
   return (
