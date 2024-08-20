@@ -47,4 +47,7 @@ const contactsSlice = createSlice({
   },
 });
 
+// Додайте селектор для отримання контактів
+export const selectContacts = (state) => state.contacts.items;
+
 export const contactsReducer = contactsSlice.reducer;

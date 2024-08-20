@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const filtersSlice = createSlice({
   name: 'filters',
   initialState: {
-    filter: '',
+    filter: '',  // початкове значення фільтра
   },
   reducers: {
     setFilter(state, action) {
@@ -13,5 +13,5 @@ const filtersSlice = createSlice({
 });
 
 export const { setFilter } = filtersSlice.actions;
-export const selectNameFilter = (state) => state.filters.name;
-export const filtersReducer = filtersSlice.reducer; 
+export const selectFilter = (state) => state.filters.filter; // Експортуємо селектор
+export const filtersReducer = filtersSlice.reducer;
